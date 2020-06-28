@@ -1,3 +1,6 @@
 dn: cn=Barbara,dc=example,dc=org
-changetype: modify
+changetype: modrdn
+newrdn: cn=babara
+deleteoldrdn: 0
 newsuperior: ou=People,dc=example,dc=org
+

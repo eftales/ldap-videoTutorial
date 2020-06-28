@@ -5,13 +5,14 @@
 4. ldap 用户
 5. phpLdapAdmin 的安装与使用
 6. 在 centos 上搭建 openldap 环境
+7. JNDI
 
 - links
 
     https://github.com/eftales/ldap-videoTutorial
 
 
-# 2 min 搭建 openldap 环境
+# 第一节 2 min 搭建 openldap 环境
 ## 你需要
 1. ubuntu 16.04
 2. docker
@@ -79,7 +80,7 @@ slaptest
 ldapsearch -x -H ldap://localhost -b dc=example,dc=org -D "cn=admin,dc=example,dc=org" -w admin
 ```
 
-# openldap 基础知识
+# 第二节 openldap 基础知识
 ![](https://upload-images.jianshu.io/upload_images/9767009-ea2993bcdd47c1b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ![](https://upload-images.jianshu.io/upload_images/9767009-a84c5c00cee097c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -92,7 +93,7 @@ ldapsearch -x -H ldap://localhost -b dc=example,dc=org -D "cn=admin,dc=example,d
 ![](https://upload-images.jianshu.io/upload_images/9767009-7b7f0dc9df18f2f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-# 3. 数据的增删减改
+# 第三节 数据的增删减改
 ```text
 ldapmodify [ldap 服务器地址] [你的用户名] [你的密码] [ldif 文件的地址]
 ```
@@ -121,7 +122,7 @@ ldapsearch -x -H ldap://127.0.0.2:389  -b dc=example,dc=org -D "cn=admin,dc=exam
 ```
 
 ```bash
-ldapsearch -x -H ldap://127.0.0.2:389  -b dc=example,dc=org -D "cn=admin,dc=example,dc=org" -w admin "cn=*,dc=example,dc=org"
+ldapsearch -x -H ldap://127.0.0.2:389  -b dc=example,dc=org -D "cn=admin,dc=example,dc=org" -w admin "cn=*"
 ```
 
 ```bash
@@ -177,11 +178,13 @@ description: Barbara description
 file name: modify3.ldif
 ```ldif
 dn: cn=Barbara,dc=example,dc=org
-changetype: modify
+changetype: modrdn
+newrdn: cn=babara
+deleteoldrdn: 0
 newsuperior: ou=People,dc=example,dc=org
 ```
 
-# 4. ldap 用户
+# 第四节 ldap 用户
 ldappasswd 管理员使用，用于重置其他用户的密码
 
 ldapmodify 所有人员都可以使用，用于更改自己的密码
