@@ -2,7 +2,7 @@
 1. 2 min 搭建 openldap 环境
 2. ldap 基础知识
 3. 数据的增删减改
-4. openldap 用户登录
+4. ldap 用户
 5. phpLdapAdmin 的安装与使用
 6. 在 centos 上搭建 openldap 环境
 
@@ -179,4 +179,29 @@ file name: modify3.ldif
 dn: cn=Barbara,dc=example,dc=org
 changetype: modify
 newsuperior: ou=People,dc=example,dc=org
+```
+
+# 4. ldap 用户
+ldappasswd 管理员使用，用于重置其他用户的密码
+
+ldapmodify 所有人员都可以使用，用于更改自己的密码
+
+```bash
+ldappasswd -x -H ldap://127.0.0.2:389 -D "cn=admin,dc=example,dc=org" -w admin  "cn=Barbara,dc=example,dc=org"
+```
+
+```bash
+ ldappasswd -x -H ldap://127.0.0.2:389 -D "cn=Barbara,dc=example,dc=org" -w xxxx -s mima
+```
+
+file name: passwd.ldif
+```ldif
+dn: cn=Barbara Jensen,dc=example,dc=org
+changetype: modify
+replace: userPassword
+userPassword: xinmima
+```
+
+```bash
+ldapmodify -a -H ldap://127.0.0.2:389-D "cn=Barbara,dc=example,dc=org" -w mima -f modifybarbara.ldif 
 ```
