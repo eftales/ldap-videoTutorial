@@ -1,0 +1,4 @@
+dn: cn=Barbara,dc=example,dc=org
+changetype: modify
+add: description
+description: Barbara description

@@ -1,0 +1,11 @@
+dn: ou=People,dc=example,dc=org
+changetype: add
+objectclass: top
+objectclass: organizationalUnit
+ou: People
+
+dn: ou=Servers,dc=example,dc=org
+changetype: add
+objectclass: top
+objectclass: organizationalUnit
+ou: Servers

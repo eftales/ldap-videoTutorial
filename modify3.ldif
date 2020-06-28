@@ -1,0 +1,3 @@
+dn: cn=Barbara,dc=example,dc=org
+changetype: modify
+newsuperior: ou=People,dc=example,dc=org
