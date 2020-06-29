@@ -1,4 +1,4 @@
-dn: cn=Barbara Jensen,dc=example,dc=org
+dn: cn=barbara,dc=example,dc=org
 changetype: modify
 replace: userPassword
 userPassword: xinmima

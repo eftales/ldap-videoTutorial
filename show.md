@@ -104,9 +104,9 @@ ldapmodify [ldap 服务器地址] [你的用户名] [你的密码] [ldif 文件�
 file name:barbara.ldif
 
 ```ldif
-dn: cn=Barbara,dc=example,dc=org
+dn: cn=barbara,dc=example,dc=org
 objectClass: inetOrgPerson
-cn: Barbara
+cn: barbara
 sn: Jensen
 title: the world's most famous mythical manager
 mail: bjensen@example.com
@@ -126,14 +126,14 @@ ldapsearch -x -H ldap://127.0.0.2:389  -b dc=example,dc=org -D "cn=admin,dc=exam
 ```
 
 ```bash
-ldapdelete -x -H ldap://127.0.0.2:389  -D "cn=admin,dc=example,dc=org" -w admin  "cn=Barbara,dc=example,dc=org"
+ldapdelete -x -H ldap://127.0.0.2:389  -D "cn=admin,dc=example,dc=org" -w admin  "cn=barbara,dc=example,dc=org"
 ```
 
 ```ldif
-dn: cn=Barbara,dc=example,dc=org
+dn: cn=barbara,dc=example,dc=org
 changetype: add
 objectClass: inetOrgPerson
-cn: Barbara
+cn: barbara
 sn: Jensen
 title: the world's most famous mythical manager
 mail: bjensen@example.com
@@ -161,7 +161,7 @@ ou: Servers
 
 file name: modify1.ldif
 ```ldif
-dn: cn=Barbara,dc=example,dc=org
+dn: cn=barbara,dc=example,dc=org
 changetype: modify
 replace: title
 title: one of the world's most famous mythical manager
@@ -169,15 +169,15 @@ title: one of the world's most famous mythical manager
 
 file name: modify2.ldif
 ```ldif
-dn: cn=Barbara,dc=example,dc=org
+dn: cn=barbara,dc=example,dc=org
 changetype: modify
 add: description
-description: Barbara description
+description: barbara description
 ```
 
 file name: modify3.ldif
 ```ldif
-dn: cn=Barbara,dc=example,dc=org
+dn: cn=barbara,dc=example,dc=org
 changetype: modrdn
 newrdn: cn=babara
 deleteoldrdn: 0
@@ -185,26 +185,26 @@ newsuperior: ou=People,dc=example,dc=org
 ```
 
 # 第四节 ldap 用户
-ldappasswd 管理员使用，用于重置其他用户的密码
+ldappasswd 用于重置其他用户的密码
 
-ldapmodify 所有人员都可以使用，用于更改自己的密码
+ldapmodify 用于更改自己的密码
 
 ```bash
-ldappasswd -x -H ldap://127.0.0.2:389 -D "cn=admin,dc=example,dc=org" -w admin  "cn=Barbara,dc=example,dc=org"
+ldappasswd -x -H ldap://127.0.0.2:389 -D "cn=admin,dc=example,dc=org" -w admin  "cn=barbara,dc=example,dc=org"
 ```
 
 ```bash
- ldappasswd -x -H ldap://127.0.0.2:389 -D "cn=Barbara,dc=example,dc=org" -w xxxx -s mima
+ ldappasswd -x -H ldap://127.0.0.2:389 -D "cn=barbara,dc=example,dc=org" -w xxxx -s mima
 ```
 
 file name: passwd.ldif
 ```ldif
-dn: cn=Barbara Jensen,dc=example,dc=org
+dn: cn=barbara,dc=example,dc=org
 changetype: modify
 replace: userPassword
 userPassword: xinmima
 ```
 
 ```bash
-ldapmodify -a -H ldap://127.0.0.2:389-D "cn=Barbara,dc=example,dc=org" -w mima -f modifybarbara.ldif 
+ldapmodify -x -H ldap://127.0.0.2:389 -D "cn=barbara,dc=example,dc=org" -w mima -f passwd.ldif 
 ```

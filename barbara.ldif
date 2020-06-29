@@ -1,6 +1,6 @@
-dn: cn=Barbara,dc=example,dc=org
+dn: cn=barbara,dc=example,dc=org
 objectClass: inetOrgPerson
-cn: Barbara
+cn: barbara
 sn: Jensen
 title: the world's most famous mythical manager
 mail: bjensen@example.com

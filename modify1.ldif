@@ -1,4 +1,4 @@
-dn: cn=Barbara,dc=example,dc=org
+dn: cn=barbara,dc=example,dc=org
 changetype: modify
 replace: title
 title: one of the world's most famous mythical manager
