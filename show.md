@@ -246,3 +246,7 @@ services:
 可以参考：https://blog.csdn.net/awj321000/article/details/78812358
 
 这个不是 JNDI，用了第三方的库，个人感觉 JNDI 不好用。
+
+如果读者更熟悉 Python 的话，可以参考这些：
+
+https://zhuanlan.zhihu.com/p/52532191,https://zhuanlan.zhihu.com/p/52532409,https://zhuanlan.zhihu.com/p/52532820,https://zhuanlan.zhihu.com/p/52532895,https://zhuanlan.zhihu.com/p/52533010
