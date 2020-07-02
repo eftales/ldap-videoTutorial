@@ -241,3 +241,8 @@ services:
       - openldap
 ```
 
+
+# 第六节 JNDI
+可以参考：https://blog.csdn.net/awj321000/article/details/78812358
+
+这个不是 JNDI，用了第三方的库，个人感觉 JNDI 不好用。
