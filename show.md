@@ -2,10 +2,10 @@
 1. 2 min 搭建 openldap 环境
 2. ldap 基础知识
 3. 数据的增删减改
-4. ldap 用户
+4. openldap 用户登录
 5. phpLdapAdmin 的安装与使用
-6. 在 centos 上搭建 openldap 环境
-7. JNDI
+6. JNDI
+7. 在 centos 上搭建 openldap 环境
 
 - links
 
@@ -17,8 +17,6 @@
 1. ubuntu 16.04
 2. docker
 3. linux
-
-
 
 
 ## docker 安装脚本
@@ -208,3 +206,38 @@ userPassword: xinmima
 ```bash
 ldapmodify -x -H ldap://127.0.0.2:389 -D "cn=barbara,dc=example,dc=org" -w mima -f passwd.ldif 
 ```
+
+
+# 第五节 phpLdapAdmin 的安装与使用
+
+```docker 
+osixia/openldap:1.2.2
+osixia/phpldapadmin:0.7.2
+```
+
+
+```docker-compose
+version: '2'
+
+services:
+  openldap:
+    container_name: openldap
+    image: osixia/openldap:1.2.2
+    ports:
+      - "389:389"
+      - "636:636"
+    command: [--copy-service,  --loglevel, debug]
+  phpldapadmin:
+    container_name: phpldapadmin
+    image: osixia/phpldapadmin:0.7.2
+    ports:
+      - "80:80"
+    environment:
+      - PHPLDAPADMIN_HTTPS="false"
+      - PHPLDAPADMIN_LDAP_HOSTS=openldap
+    links:
+      - openldap
+    depends_on:
+      - openldap
+```
+
